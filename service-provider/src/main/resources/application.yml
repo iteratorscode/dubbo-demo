@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  application:
+    name: SERVICE-PROVIDER
+  profiles: dev
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      server-addr: localhost:8848
+      discovery:
+        enabled: true
+        register-enabled: true
+        namespace: 1325a87c-3f14-4ad7-b25b-ec7e02890d67
+dubbo:
+  scan:
+    base-packages: com.iterators.service.provider.service
+  application:
+    name: service-provider
+    metadata-type: local
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    username: nacos
+    password: nacos
+    address: nacos://127.0.0.1:8848
+    protocol: naocs
+  provider:
+    host: localhost
+  cloud:
+    subscribed-services: ${spring.application.name}
+
+feign:
+  hystrix:
+    enabled: true
+
+server:
+  port: 8081

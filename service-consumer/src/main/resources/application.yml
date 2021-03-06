@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  application:
+    name: SERVICE-CONSUMER
+  profiles: dev
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        namespace: 1325a87c-3f14-4ad7-b25b-ec7e02890d67
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    protocol: dubbo
+    address: nacos://127.0.0.1:8848
+  cloud:
+    subscribed-services: ${spring.application.name}
+
+server:
+  port: 8082
