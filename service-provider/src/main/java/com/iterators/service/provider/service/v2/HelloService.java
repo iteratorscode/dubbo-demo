@@ -1,4 +1,4 @@
-package com.iterators.service.provider.service;
+package com.iterators.service.provider.service.v2;
 
 import api.hello.IHelloService;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -11,9 +11,9 @@ import org.apache.dubbo.config.annotation.DubboService;
  */
 @DubboService(
     interfaceClass = IHelloService.class,
-    version = "1.0.0"
+    version = "2.0.0"
 )
-public class HelloServiceImpl implements IHelloService {
+public class HelloService implements IHelloService {
     @Override
     public String sayHello(String name) {
         return String.format("Hello, %s", name);
